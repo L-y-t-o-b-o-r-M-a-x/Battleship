@@ -1,10 +1,12 @@
+let randomLoc = Math.floor(Math.random() * 5);
+let location1 = randomLoc;
+let location2 = location1 + 1;
+let location3 = location2 + 2;
 let isSunk = false; // потоплен корабль или нет
 let hits = 0; // количества попаданий
 let guesses = 0; // количества попыток
 let guess; // номера текущей попытки
-let location1 = 3;
-let location2 = 4;
-let location3 = 5;
+
 
 while (isSunk == false) {  // ЦИКЛ: пока корабль не будет потоплен
     guess = prompt("Готовь, целься, стреляй! (введите число 0-6):"); // ПОЛУЧИТЬ координаты выстрела
