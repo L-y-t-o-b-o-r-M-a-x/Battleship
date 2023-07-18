@@ -8,7 +8,8 @@ html {
   box-sizing: inherit;
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   height: auto;
 }
@@ -55,11 +56,65 @@ body {
 }
 
 .radar {
- position: relative;
- width: 1024px;
- height: 863px;
- margin: auto;
- background: url("img/board.jpg");
- background-position: center;
- background-repeat: no-repeat;
+  position: relative;
+  width: 1024px;
+  height: 863px;
+  margin: auto;
+  background: url("img/board.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgb(83, 175, 19);
+}
+
+.grid {
+  position: absolute;
+  left: 173px;
+  top: 99px;
+  border-spacing: 0px;
+  padding: 0;
+  margin: 0;
+
+}
+/* .grid__tr {
+  border: 3px solid white;
+} */
+
+.grid__td {
+  width: 96px;
+  height: 96px;
+  /* border: 3px solid white; */
+}
+
+.form {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  background-color: rgb(83, 175, 19);
+}
+
+.form__input {
+  background-color: rgb(152, 207, 113);
+  border-color: rgb(83, 175, 19);
+  font-size: 1em;
+}
+
+.hit {
+  background: url("/img/ship.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  }
+
+  .miss {
+  background: url("/img/miss.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  }

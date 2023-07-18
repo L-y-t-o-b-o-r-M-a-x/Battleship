@@ -1,34 +1,74 @@
-let randomLoc = Math.floor(Math.random() * 5);
-let location1 = randomLoc;
-let location2 = location1 + 1;
-let location3 = location2 + 1;
-let isSunk = false; // потоплен корабль или нет
-let hits = 0; // количества попаданий
-let guesses = 0; // количества попыток
-let guess; // номера текущей попытки
+// Объект Представления
+let view = {
+  displayMessage: function (msg) {
+    let messageArea = document.getElementById("messageArea");
+    messageArea.innerHTML = msg;
+  },
+  displayHit: function (location) {
+    let cell = document.getElementById(location);
+    cell.setAttribute("class", "hit");
+  },
+  displayMiss: function (location) {
+    let cell = document.getElementById(location);
+    cell.setAttribute("class", "miss");
+  },
+};
 
-console.log(randomLoc);
-console.log(location1);
-console.log(location2);
+// view.displayMessage("Tap tap, is this thing on?");
 
-while (isSunk == false) {  // ЦИКЛ: пока корабль не будет потоплен
-    guess = prompt("Готовь, целься, стреляй! (введите число 0-6):"); // ПОЛУЧИТЬ координаты выстрела
-    if (guess < 0 || guess > 6) {  // Проверяем предположение пользователя...
-        alert("Пожалуйста, введите число 0-6!");
-    } else {
-        guesses = guesses + 1; // Похоже, введенное значение корректно; увеличиваем переменную guesses на 1.
+// Объект Модель
 
-        if (guess == location1 || guess == location2 || guess == location3) {
-            alert("«Есть пробитие!»");
-            hits = hits + 1;  // Если выстрел пришелся в одну из клеток корабля, увеличиваем счетчик hits.
-            if (hits == 3) {
-                isSunk = true;
-                alert("«Ты потопил мой линкор!»");
-            }
-        } else {
-            alert("«Промах!»");
+let model = {
+  boardSize: 7,
+  numShips: 3,
+  shipLength: 3,
+  shipsSunk: 0,
+
+  ships: [
+    { locations: ["06", "16", "26"], hits: ["", "", ""] },
+    { locations: ["24", "34", "44"], hits: ["", "", ""] },
+    { locations: ["10", "11", "12"], hits: ["", "", ""] },
+  ],
+
+  fire: function (guess) {
+    for (let i = 0; i < this.numShips; i++) {
+      let ship = this.ships[i];
+      let index = ship.locations.indexOf(guess);
+      console.log(ship);
+      if (index >= 0) {
+        ship.hits[index] = "hit";
+        view.displayHit(guess);
+        view.displayMessage("HIT!");
+
+        if (this.isSunk(ship)) {
+          view.displayMessage("<< ЛИНКОР ПОТОПЛЕН!!! >>");
+          this.shipsSunk++;
         }
+        return true;
+      }
     }
-}
-let stats = "Ты использовал " + guesses + " попытки чтобы потопить линкор, " + "значит ваша точность стрельбы равна " + (3/guesses);
-alert(stats);
+    view.displayMiss(guess);
+    view.displayMessage("You missed.");
+    return false;
+  },
+
+  isSunk: function(ship) {
+    for (let i = 0; i < this.shipLength; i++) {
+      if (ship.hits[i] !== "hit") {
+        return false;
+      }
+    }
+    return true;
+  }
+};
+
+model.fire("53");
+model.fire("06");
+model.fire("16");
+model.fire("26");
+model.fire("34");
+model.fire("24");
+model.fire("44");
+model.fire("12");
+model.fire("11");
+model.fire("10");
