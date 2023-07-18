@@ -59,7 +59,7 @@ body {
   width: 1024px;
   height: 863px;
   margin: auto;
-  background: url("img/board.jpg");
+  background: url("../img/board.jpg");
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -107,14 +107,14 @@ body {
 }
 
 .hit {
-  background: url("./img/ship.png");
+  background: url("../img/ship.png");
   background-position: center center;
   background-repeat: no-repeat;
 
   }
 
   .miss {
-  background: url("./img/miss.png");
+  background: url("../img/miss.png");
   background-position: center center;
   background-repeat: no-repeat;
 
