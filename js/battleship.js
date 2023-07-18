@@ -105,15 +105,35 @@ let model = {
 };
 
 
-// Объект Контроллер
+// // Объект Контроллер
+
+// let controller = {
+//   guesses: 0,
+
+//   processGuess: function (guess) {
+//     let location = parseGuess(guess);
+//     if (location) {
+//       this.guesses++;
+//       let hit = model.fire(location);
+
+//       if (hit && model.shipsSunk === model.numShips) {
+//         view.displayMessage(
+//           "Ты потопил все мои линкоры, в " + this.guesses + " выстрелов"
+//         );
+//       }
+//     }
+//   },
+// };
 
 let controller = {
   guesses: 0,
+  previousGuesses: [],
 
   processGuess: function (guess) {
     let location = parseGuess(guess);
-    if (location) {
+    if (location && !this.isDuplicateGuess(location)) {
       this.guesses++;
+      this.previousGuesses.push(location);
       let hit = model.fire(location);
 
       if (hit && model.shipsSunk === model.numShips) {
@@ -122,6 +142,12 @@ let controller = {
         );
       }
     }
+  },
+//  Функция для хранения всех предыдущих выстрелов
+
+  isDuplicateGuess: function (guess) {
+    view.displayMessage("Вы уже стреляли по этим координатам!");
+    return this.previousGuesses.includes(guess);
   },
 };
 
