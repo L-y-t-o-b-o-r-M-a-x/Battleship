@@ -11,8 +11,25 @@ let view = {
   displayMiss: function (location) {
     let cell = document.getElementById(location);
     cell.setAttribute("class", "miss");
-  },
+  }
 };
+
+// let view = {
+//   displayMessage: function (msg) {
+//     let messageArea = document.getElementById("messageArea");
+//     messageArea.innerHTML = msg;
+//   },
+//   displayHit: function (location) {
+//     let cell = document.getElementById(location);
+//     cell.innerHTML = "X"; // Отображение попадания
+//     cell.setAttribute("class", "hit");
+//   },
+//   displayMiss: function (location) {
+//     let cell = document.getElementById(location);
+//     cell.innerHTML = "O"; // Отображение промаха
+//     cell.setAttribute("class", "miss");
+//   }
+// };
 
 // Объект Модель
 
@@ -101,9 +118,8 @@ let model = {
       }
     }
     return false;
-  }
+  },
 };
-
 
 // // Объект Контроллер
 
@@ -143,7 +159,7 @@ let controller = {
       }
     }
   },
-//  Функция для хранения всех предыдущих выстрелов
+  //  Функция для хранения всех предыдущих выстрелов
 
   isDuplicateGuess: function (guess) {
     view.displayMessage("Вы уже стреляли по этим координатам!");

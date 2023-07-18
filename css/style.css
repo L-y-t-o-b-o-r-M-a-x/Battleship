@@ -80,11 +80,11 @@ body {
   border-spacing: 0px;
   padding: 0;
   margin: 0;
-
 }
-/* .grid__tr {
-  border: 3px solid white;
-} */
+.grid__tr {
+  /* border: 3px solid white;
+  border-color: aliceblue; */
+}
 
 .grid__td {
   width: 96px;
@@ -107,15 +107,17 @@ body {
 }
 
 .hit {
+  width: 96px;
+  height: 96px;
   background: url("../img/ship.png");
   background-position: center center;
   background-repeat: no-repeat;
+}
 
-  }
-
-  .miss {
+.miss {
+  width: 96px;
+  height: 96px;
   background: url("../img/miss.png");
   background-position: center center;
   background-repeat: no-repeat;
-
-  }
+}
