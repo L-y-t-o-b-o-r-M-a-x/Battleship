@@ -107,14 +107,14 @@ body {
 }
 
 .hit {
-  background: url("/img/ship.png");
+  background: url("./img/ship.png");
   background-position: center center;
   background-repeat: no-repeat;
 
   }
 
   .miss {
-  background: url("/img/miss.png");
+  background: url("./img/miss.png");
   background-position: center center;
   background-repeat: no-repeat;
 
